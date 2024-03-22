@@ -10,7 +10,7 @@
             <div class="card-header">
                 <div class="card-title">Edit Kategori</div>
             </div>
-            <form action="/kategori/edit/{{ $data->kategori_id }}" method="post">
+            <form action="/kategori/edited/{{ $data->kategori_id }}" method="post">
                 {{ csrf_field() }}
                 {{ method_field('PUT') }}
                 <div class="card-body">
