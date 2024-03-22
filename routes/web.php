@@ -32,4 +32,11 @@ Route::get('/user/hapus/{id}', [UserController::class, 'hapus']);
 Route::get('/kategori', [KategoriController::class, 'index']);
 
 Route::get('/kategori/create', [KategoriController::class, 'create']);
-Route::post('/kategori', [KategoriController::class, 'store']);
+// Route::post('/kategori', [KategoriController::class, 'store']);
+
+//TUGAS NO 3:
+Route::get('/kategori/edit/{id}', [KategoriController::class, 'edit']);
+Route::put('/kategori/edited/{id}', [KategoriController::class, 'edited']);
+
+
+Route::get('/kategori/delete/{id}', [KategoriController::class, 'delete']);

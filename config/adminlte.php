@@ -305,6 +305,14 @@ return [
             'topnav_right' => true,
         ],
 
+        // Tugas No 2:
+        [
+            'text' => 'Manage Category',
+            'url' => '/kategori',
+            'icon' => 'fa fa-folder-open', 
+        ],
+        
+
         // Sidebar items:
         [
             'type' => 'sidebar-menu-search',
