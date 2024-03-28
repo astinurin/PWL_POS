@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\POSController;
 use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +33,7 @@ Route::get('/user/hapus/{id}', [UserController::class, 'hapus']);
 Route::get('/kategori', [KategoriController::class, 'index']);
 
 Route::get('/kategori/create', [KategoriController::class, 'create']);
-// Route::post('/kategori', [KategoriController::class, 'store']);
+Route::post('/kategori', [KategoriController::class, 'store']);
 
 //TUGAS NO 3:
 // Route::get('/kategori/edit/{id}', [KategoriController::class, 'edit']);
@@ -42,3 +43,14 @@ Route::put('/kategori/edited/{id}', [KategoriController::class, 'edited']);
 Route::get('/kategori/delete/{id}', [KategoriController::class, 'delete']);
 
 Route::get('/kategori/edit/{id}', [KategoriController::class, 'edit']);
+
+Route::get('/user/create', function () {
+    return view('m_user.create');
+});
+
+Route::get('/level/create', function () {
+    return view('level.create');
+});
+
+Route::resource('m_user', POSController::class);
+

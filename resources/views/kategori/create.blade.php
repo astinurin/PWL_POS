@@ -15,7 +15,14 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="kodeKategori">Kode Kategori</label>
-                        <input type="text" name="kodeKategori" id="kodeKategori" class="form-control">
+                        <input type="text" name="kodeKategori" id="kodeKategori" class="@error('kategori_kode')
+                        is-invalid
+                            
+                        @enderror" >
+                        @error('kategori_kode')
+                            <div class="alert alert-danger">{{$message}}</div>
+                            
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="namaKategori">Nama Kategori</label>
@@ -30,3 +37,4 @@
         </div>
     </div>
 @endsection
+
