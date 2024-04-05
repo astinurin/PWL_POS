@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('layouts.template')
 {{-- Customize layout sections --}}
 @section('subtitle', 'Kategori')
 @section('content_header_title', 'Kategori')
