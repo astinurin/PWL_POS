@@ -140,9 +140,9 @@ Route::group(['prefix' => 'penjualan'], function () {
 
 Route::get('login', [AuthController::class, 'index'])->name('login');
 Route::get('register', [AuthController::class, 'register'])->name('register');
-Route::get('proses_login', [AuthController::class, 'proses_login'])->name('proses_login');
+Route::post('proses_login', [AuthController::class, 'proses_login'])->name('proses_login');
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
-Route::get('post', [AuthController::class, 'proses_register'])->name('post');
+Route::post('proses_register', [AuthController::class, 'proses_register'])->name('proses_register');
 
 // kita atur juga u/ middleware menggunakan group pada routing
 // di dalamnya terdapat group untuk mengecek kondisi login
