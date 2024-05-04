@@ -7,10 +7,22 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class UserModel extends \Illuminate\Foundation\Auth\User
+use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Foundation\Auth\User as Authenticable;
+
+class UserModel extends Authenticable implements JWTSubject
 // class UserModel extends Model
 {
-    use HasFactory;
+    // use HasFactory;
+    
+    public function getJWTIdentifier(){
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims(){
+        return [];
+    }
+
 
     protected $table = 'm_user'; // Mendefinisikan nama tabel yang digunakan oleh model ini
     protected $primaryKey = 'user_id'; // Mendefinisikan primary key dari tabel yang digunakan
@@ -19,17 +31,17 @@ class UserModel extends \Illuminate\Foundation\Auth\User
     // protected $fillable = ['level_id', 'username', 'nama', 'password'];
     protected $fillable = ['level_id', 'username', 'nama', 'password'];
 
-    public function level(): BelongsTo{
-        return $this->belongsTo(LevelModel::class, 'level_id', 'level_id');
-    }    
+    // public function level(): BelongsTo{
+    //     return $this->belongsTo(LevelModel::class, 'level_id', 'level_id');
+    // }    
 
-    public function stok(): HasMany
-    {
-        return $this->hasMany(StokModel::class, 'user_id', 'user_id');
-    }
+    // public function stok(): HasMany
+    // {
+    //     return $this->hasMany(StokModel::class, 'user_id', 'user_id');
+    // }
 
-    public function transaksi(): HasMany
-    {
-        return $this->hasMany(TransaksiPenjualanModel::class, 'user_id', 'user_id');
-    }
+    // public function transaksi(): HasMany
+    // {
+    //     return $this->hasMany(TransaksiPenjualanModel::class, 'user_id', 'user_id');
+    // }
 }
