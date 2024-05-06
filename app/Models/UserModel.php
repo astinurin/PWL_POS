@@ -17,6 +17,7 @@ class UserModel extends Authenticable implements JWTSubject
     
     public function getJWTIdentifier(){
         return $this->getKey();
+        // return 'user_id';
     }
 
     public function getJWTCustomClaims(){
