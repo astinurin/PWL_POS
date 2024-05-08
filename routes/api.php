@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\LevelController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\KategoriController;
 use App\Http\Controllers\Api\BarangController;
+use App\Http\Controllers\Api\TransaksiPenjualanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,3 +62,10 @@ Route::put('barang/{barang}', [BarangController::class, 'update']);
 Route::delete('barang/{barang}', [BarangController::class, 'destroy']);
 
 Route::post('/register1', App\Http\Controllers\Api\RegisterController::class)->name('register1');
+
+//t_penjualan
+Route::get('penjualan', [TransaksiPenjualanController::class, 'index']);
+Route::post('penjualan', [TransaksiPenjualanController::class, 'store']);
+Route::get('penjualan/{penjualan}', [TransaksiPenjualanController::class, 'show']);
+Route::put('penjualan/{penjualan}', [TransaksiPenjualanController::class, 'update']);
+Route::delete('penjualan/{penjualan}', [TransaksiPenjualanController::class, 'destroy']);

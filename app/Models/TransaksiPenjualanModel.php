@@ -4,7 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 
 class TransaksiPenjualanModel extends Model
 {
@@ -13,7 +15,16 @@ class TransaksiPenjualanModel extends Model
     protected $table = 't_penjualan'; //mendefiniskan nama tabel yang digunakan oleh model ini
     protected $primaryKey = 'penjualan_id'; //mendefiniskan primary key dari tabel yang digunakan
 
-    protected $fillable = ['user_id','pembeli','penjualan_kode','penjualan_tanggal'];
+    protected $guarded = [
+        'penjualan_id'
+    ];
+
+    protected function image(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($image) => url('/storage/posts/' . $image),
+        );
+    }
 
     public function user(): BelongsTo
     {
