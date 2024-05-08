@@ -11,19 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('m_barang', function (Blueprint $table) {
-            $table->id('barang_id');
-            $table->unsignedBigInteger('kategori_id')->index(); // indexing untuk ForeignKey
-            $table->string('barang_kode', 10)->unique();
-            $table->string('barang_nama', 100);
-            $table->integer('harga_beli');
-            $table->integer('harga_jual');
-            $table->timestamps();
-
-            //Mendefinisikan Foreign key
-            $table->foreign('kategori_id')->references('kategori_id')->on('m_kategori');
-
+        Schema::table('m_barang', function(Blueprint $table){
+            $table->string('image');
         });
+        // Schema::create('m_barang', function (Blueprint $table) {
+        //     $table->id('barang_id');
+        //     $table->unsignedBigInteger('kategori_id')->index(); // indexing untuk ForeignKey
+        //     $table->string('barang_kode', 10)->unique();
+        //     $table->string('barang_nama', 100);
+        //     $table->integer('harga_beli');
+        //     $table->integer('harga_jual');
+        //     $table->timestamps();
+
+        //     //Mendefinisikan Foreign key
+        //     $table->foreign('kategori_id')->references('kategori_id')->on('m_kategori');
+
+        // });
     }
 
     /**
@@ -31,6 +34,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('m_barang');
+        Schema::table('m_barang', function(Blueprint $table){
+            $table->dropColumn('image');
+        });
+        // Schema::dropIfExists('m_barang');
     }
 };
