@@ -12,6 +12,7 @@ use App\Http\Controllers\StokController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ManagerController;
+use App\Http\Controllers\FileUploadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -157,4 +158,18 @@ Route::group(['middleware'=>['auth']], function(){
     Route::group(['middleware'=> ['cek_login:2']], function(){
         Route::resource('manager', ManagerController::class);
     });
+
+
 });
+    //================================== BATAS SUCI ====================================
+//JS12 
+
+Route::get('/', function(){
+        return view('welcome')
+    ;}); 
+
+// u/ tampilkan form dg akses method fileUpload
+Route::get('/file-upload', [FileUploadController::class, 'fileUpload']);
+
+//untuk pemrosesan form dengan mengakses method prosesfileUpload() di FileUploadControlle
+Route::post('/file-upload', [FileUploadController::class, 'prosesFileUpload']);
